@@ -1,0 +1,46 @@
+/* Layout */
+.container {
+    display: flex;  
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 100vh;
+}
+
+.section {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin: 10px;
+    padding: 10px;
+}
+
+.upload-area {
+    text-align: center;
+    
+}
+
+.settings {
+    text-align: center;
+}
+
+/* Main Content */
+.header {
+    font-family: sans-serif;
+    font-size: 30px;
+    text-align: center; 
+    color: #757575;
+}
+
+.placeholder {
+    margin: auto;
+}
+
+.left-section {
+    background-color: lightpink;
+}
+
+.right-section {
+    background-color: white;
+}
