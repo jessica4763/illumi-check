@@ -1,5 +1,5 @@
 /* Layout */
-.container {
+.page-container {
   display: flex;  
   flex: 1;
   flex-direction: row;
@@ -14,30 +14,27 @@
   flex-wrap: wrap;
 
   align-items: center;
-
-  width: 100%;
 }
 
-.settings {
-  flex: 4;
+.section-left {
+  margin: 3%;
+}
+
+.section-right {
+  margin: 1%;
 }
 
 /* Main Content */
 
-.header {
-  font-family: sans-serif;
-  font-size: 24px;
+.text {
   color: #757575;
+  font-family: sans-serif;
 }
 
-.placeholder {
+.header-text {
+  font-size: 24px;
+}
+
+.placeholder-text {
   margin: auto;
-}
-
-.left {
-  background-color: white;
-}
-
-.right {
-  background-color: white;
 }

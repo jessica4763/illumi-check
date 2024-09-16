@@ -1,22 +1,22 @@
 import logo from './logo.svg';
 import './App.css';
 import Upload from './components/Upload'
-
+import Settings from './components/Settings'
 
 function App() {
   return (
-    <div class="container">
-        <div class="section left">
-            <Upload/>
-            <div class="settings">
-            </div>
+    <div className="page-container">
+        <div className="section section-left">
+            <Upload />
+            <Settings />
         </div>
-        <div class="section right">
-            <p class="header">Phong lighting feedback</p>
-            <p class="header placeholder">results will be displayed here</p>
+        <div className="section section-right">
+            <p className="text header-text">Phong lighting feedback</p>
+            <p className="text header-text placeholder-text">results will be displayed here</p>
         </div>
     </div>
   )
 }
+
 
 export default App;
