@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect, useState} from 'react'
-import { useDropzone } from 'react-dropzone'
+import {useDropzone} from 'react-dropzone'
 import './Upload.css'
 
 import defaultImage from './default.png';
@@ -12,18 +12,16 @@ function Upload() {
   const onDropAccepted = useCallback(acceptedImages => {
     setAccepted(true);
 
-    const img = acceptedImages[0];
-
     const reader = new FileReader();
     reader.onabort = () => console.log('Image reading was aborted');
     reader.onerror = () => console.log('Image reading has failed');
     reader.onload = (event) => {
       setCurrentImage(event.target.result);
 
-      // document.querySelector('.upload-container').style.border = '0px dashed #757575';
+      document.querySelector('.upload-container').style.border = '0px dashed #757575';
     }
 
-    reader.readAsDataURL(img);
+    reader.readAsDataURL(acceptedImages[0]);
   }, []);
 
   const {getRootProps, getInputProps, isDragActive} = useDropzone({
@@ -56,7 +54,7 @@ function Upload() {
 
   function RenderedContent() {
     if (accepted && !isDragActive) {
-      return <img id="user-image" src={currentImage} width='600px' height='337.5px' />
+      return <img id="user-image" src={currentImage} width='600px' height='337.5px'/>
     } else {
       return <RenderedText />
     }

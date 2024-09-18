@@ -13,7 +13,7 @@ function Settings() {
     return (
         <div className="settings-container settings-container-text">
             <p>
-                If your answer didn't pass all test cases, drag and drop the output image directly 
+                If your answer didn't pass all test cases, upload or drag and drop the output image directly 
                 from CodeRunner into the box above for some feedback. 
                 <br/>
                 <br/>
