@@ -12,8 +12,6 @@ function Upload() {
   const onDropAccepted = useCallback(acceptedImages => {
     setAccepted(true);
 
-    const img = acceptedImages[0];
-
     const reader = new FileReader();
     reader.onabort = () => console.log('Image reading was aborted');
     reader.onerror = () => console.log('Image reading has failed');
@@ -23,7 +21,7 @@ function Upload() {
       // document.querySelector('.upload-container').style.border = '0px dashed #757575';
     }
 
-    reader.readAsDataURL(img);
+    reader.readAsDataURL(acceptedImages[0]);
   }, []);
 
   const {getRootProps, getInputProps, isDragActive} = useDropzone({
@@ -41,14 +39,14 @@ function Upload() {
 
   function RenderedText() {
     return (
-      <div style={{ backgroundImage: `url(${currentImage})` }} className='default'>
+      <div className='default' style={{ backgroundImage: {currentImage} }}>
         {
         isDragActive 
         ? <p>Drop the image here</p> 
         : <div>
             <p>Upload or drag and drop an image</p>
             <em>(Only *.jpeg and *.png images will be accepted)</em>
-          </div> 
+          </div>
         }
       </div>
     )
@@ -56,7 +54,7 @@ function Upload() {
 
   function RenderedContent() {
     if (accepted && !isDragActive) {
-      return <img id="user-image" src={currentImage} width='600px' height='337.5px' />
+      return <img src={currentImage} width='600' height='337.5' />
     } else {
       return <RenderedText />
     }
