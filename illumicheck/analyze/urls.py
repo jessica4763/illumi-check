@@ -2,5 +2,6 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.index, name='index')
+    path('upload', views.upload, name='upload'),
+    path('get_csrf_token', views.get_csrf_token, name='get_csrf_token')
 ]

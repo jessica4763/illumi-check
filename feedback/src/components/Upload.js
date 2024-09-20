@@ -1,4 +1,5 @@
 import React, {useCallback, useEffect, useState} from 'react'
+import axios from 'axios'
 import { useDropzone } from 'react-dropzone'
 import './Upload.css'
 
@@ -6,6 +7,18 @@ import defaultImage from './default.png';
 
 
 function Upload() {
+  // Get and store a CSRF token. Callback function only runs once (when the component is mounted)  
+  const [csrfToken, setCsrfToken] = useState('');
+  useEffect(() => {
+    axios.get("http://localhost:8000/analyze/get_csrf_token")
+      .then(response => {
+        setCsrfToken(response.data.csrfToken);
+      })
+      .catch(error => {
+        console.error("Error getting CSRF token:", error);
+      });
+  }, []);
+
   const [accepted, setAccepted] = useState(false);
   const [currentImage, setCurrentImage] = useState(defaultImage);
 
@@ -18,11 +31,30 @@ function Upload() {
     reader.onload = (event) => {
       setCurrentImage(event.target.result);
 
-      // document.querySelector('.upload-container').style.border = '0px dashed #757575';
+      predict(event.target.result);
     }
 
     reader.readAsDataURL(acceptedImages[0]);
-  }, []);
+  }, [csrfToken]);  // predict uses the context of the onDropAccepted callback function, so we have to add csrfToken to onDropAccepted for predict to have csrfToken
+
+  const predict = async (imageDataURL) => {
+    try {
+      console.log('csrfToken:', csrfToken);
+      const response = await axios.post("http://localhost:8000/analyze/upload", {
+        image: imageDataURL
+      }, {
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRFToken': csrfToken
+        },
+        withCredentials: true // This allows cookies to be sent
+      });
+
+      console.log("Response:", response.data);
+    } catch (error) {
+      console.error("Error running image through CNN:", error);
+    }
+  } 
 
   const {getRootProps, getInputProps, isDragActive} = useDropzone({
     onDropAccepted,
@@ -31,11 +63,7 @@ function Upload() {
       'image/png': []
     },
     multiple: false,
-  })  
-
-  useEffect(() => {
-    console.log('isDragActive:', isDragActive);
-  }, [isDragActive]);
+  });
 
   function RenderedText() {
     return (
