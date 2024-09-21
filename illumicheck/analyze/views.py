@@ -1,8 +1,7 @@
 import base64
 from django.http import HttpResponse, JsonResponse
-from django.middleware.csrf import get_token
 from django.shortcuts import render
-from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
+from django.views.decorators.csrf import csrf_exempt
 from io import BytesIO
 import json
 from PIL import Image
@@ -13,12 +12,6 @@ from torchvision.transforms.functional import pil_to_tensor
 # model_path = "static/analyze/model.pth"
 # model = torch.load(model_path)
 # model.eval()
-
-
-def get_csrf_token(request):
-    csrfToken = get_token(request)
-    response = JsonResponse({'csrfToken': csrfToken})
-    return response
 
 
 @csrf_exempt

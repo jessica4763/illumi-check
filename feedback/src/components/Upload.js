@@ -6,18 +6,6 @@ import './Upload.css'
 
 
 function Upload() {
-  // Get and store a CSRF token. Callback function only runs once (when the component is mounted)  
-  const [csrfToken, setCsrfToken] = useState('');
-  useEffect(() => {
-    axios.get("http://localhost:8000/analyze/get_csrf_token")
-      .then(response => {
-        setCsrfToken(response.data.csrfToken);
-      })
-      .catch(error => {
-        console.error("Error getting CSRF token:", error);
-      });
-  }, []);
-
   const [accepted, setAccepted] = useState(false);
   const [currentImage, setCurrentImage] = useState(defaultImage);
 
@@ -34,19 +22,16 @@ function Upload() {
     }
 
     reader.readAsDataURL(acceptedImages[0]);
-  }, [csrfToken]);  // predict uses the context of the onDropAccepted callback function, so we have to add csrfToken to onDropAccepted for predict to have csrfToken
+  }, []); 
 
   const predict = async (imageDataURL) => {
     try {
-      console.log('csrfToken:', csrfToken);
       const response = await axios.post("http://localhost:8000/analyze/upload", {
         image: imageDataURL
       }, {
         headers: {
           'Content-Type': 'application/json',
-          'X-CSRFToken': csrfToken
         },
-        withCredentials: true // This allows cookies to be sent
       });
 
       console.log("Response:", response.data);
