@@ -9,9 +9,9 @@ import torch
 from torchvision.transforms.functional import pil_to_tensor
 
 # Load the PyTorch model and set to evaluation mode
-# model_path = "static/analyze/model.pth"
-# model = torch.load(model_path)
-# model.eval()
+model_path = "illumicheck/analyze/static/analyze/model.pth"
+model = torch.load(model_path)
+model.eval()
 
 
 @csrf_exempt
