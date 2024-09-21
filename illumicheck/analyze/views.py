@@ -21,6 +21,7 @@ def get_csrf_token(request):
     return response
 
 
+@csrf_exempt
 def upload(request):
     if request.method == "POST":
         try: 

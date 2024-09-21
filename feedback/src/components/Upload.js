@@ -1,9 +1,8 @@
-import React, {useCallback, useEffect, useState} from 'react'
 import axios from 'axios'
+import defaultImage from './default.png';
+import React, {useCallback, useEffect, useState} from 'react'
 import { useDropzone } from 'react-dropzone'
 import './Upload.css'
-
-import defaultImage from './default.png';
 
 
 function Upload() {
