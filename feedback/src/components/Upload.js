@@ -12,7 +12,7 @@ function Upload() {
   const onDropAccepted = useCallback(acceptedImages => {
     setAccepted(true);
 
-    const reader = new FileReader();
+    const reader = new FileReader();  
     reader.onabort = () => console.log('Image reading was aborted');
     reader.onerror = () => console.log('Image reading has failed');
     reader.onload = (event) => {

@@ -58,7 +58,7 @@ def upload(request):
 
         # A 1-D tensor with size (num_output_neurons,)
         prediction = model(image).squeeze()
-
+        
         possible_errors = []
         for label, output in enumerate(prediction):
             if output > 0.5:
