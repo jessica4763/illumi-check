@@ -1,9 +1,7 @@
 /* Layout */
 .page-container {
   display: flex;  
-  flex: 1;
   flex-direction: row;
-  flex-wrap: wrap;
   height: 100vh;
 }
 
@@ -11,17 +9,11 @@
   display: flex;
   flex: 1;
   flex-direction: column;
-  flex-wrap: wrap;
 
   align-items: center;
-}
 
-.section-left {
-  margin: 1%;
-}
+  margin: 3%;
 
-.section-right {
-  margin: 1%;
 }
 
 /* Main Content */

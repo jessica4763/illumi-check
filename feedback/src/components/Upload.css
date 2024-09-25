@@ -1,7 +1,6 @@
 .default {
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
 
     align-items: center;
     justify-content: center;
@@ -20,10 +19,12 @@
 
     color: #757575;
     font-family: sans-serif;
-    font-size: 16px;
+    font-size: 18px;
 }
 
 .upload-container {
     width: 600px;
     height: 337.5px;
+
+    margin: 3%;
 }

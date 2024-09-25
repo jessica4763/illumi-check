@@ -59,11 +59,11 @@ def upload(request):
         # A 1-D tensor with size (num_output_neurons,)
         prediction = model(image).squeeze()
         
-        possible_errors = []
+        possible_errors = {}
         for label, output in enumerate(prediction):
             if output > 0.5:
-                possible_errors.append(labels_map[label])
+                possible_errors[label] = labels_map[label]
 
-        return HttpResponse(possible_errors)
+        return JsonResponse(possible_errors)
     
     return JsonResponse({'error': "Invalid request method"}, status=405)

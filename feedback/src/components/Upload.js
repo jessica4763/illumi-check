@@ -5,7 +5,7 @@ import { useDropzone } from 'react-dropzone'
 import './Upload.css'
 
 
-function Upload() {
+function Upload( { setResults } ) {
   const [accepted, setAccepted] = useState(false);
   const [currentImage, setCurrentImage] = useState(defaultImage);
 
@@ -35,6 +35,8 @@ function Upload() {
       });
 
       console.log("Response:", response.data);
+      console.log("Type of response.data:", typeof response.data);
+      setResults(response.data);
     } catch (error) {
       console.error("Error running image through CNN:", error);
     }

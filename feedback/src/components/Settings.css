@@ -2,17 +2,14 @@
     display: flex;
     flex: 3;
     flex-direction: column;
-    flex-wrap: wrap;
 
     align-items: left;
 
-    margin: 3%;
-
-    width: 66%;
+    width: 600px;
 }
 
 .settings-container-text {
     color: #757575;
     font-family: sans-serif;
-    font-size: 16px;
+    font-size: 14px;
 }
